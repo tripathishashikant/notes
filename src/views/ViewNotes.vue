@@ -6,31 +6,46 @@
           <textarea
             class="textarea"
             placeholder="Add a new note"
+            ref="newNoteRef"
+            v-model="newNote"
           />
         </div>
       </div>
 
       <div class="field is-grouped is-grouped-right">
         <div class="control">
-          <button class="button is-link has-background-success">Submit</button>
+          <button class="button is-link has-background-success" :disabled="newNote === ''" @click="handleAddNote">Add New Note</button>
         </div>
       </div>
     </div>
-    <div
-      class="card">
-      <div class="card-content">
-        <div class="content">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos, impedit officiis. Veritatis saepe numquam quibusdam itaque. Ab ratione eligendi laboriosam vero! Enim fugit, illum id
-            similique earum debitis accusantium dicta!</p>
-        </div>
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
-      </footer>
-    </div>
+
+    <Note
+      v-for="note in notesStore.notes"
+      :key="note.id"
+      :note="note"
+    />
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import Note from "@/components/notes/Note.vue"
+import { useNotesStore } from '@/stores/notes.store.js'
+
+const newNote = ref('');
+const notesStore = useNotesStore();
+const newNoteRef = ref(null);
+
+function handleAddNote() {
+  const id = new Date().getTime().toString();
+  const note = { id, content: newNote.value };
+
+  notesStore.addNote(note);
+
+  newNote.value = '';
+  newNoteRef.value.focus();
+}
+</script>
 
 <style scoped>
 @media screen and (max-width: 1023px) {
