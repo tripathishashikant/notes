@@ -11,7 +11,7 @@
         </div>
       </div>
       <footer class="card-footer">
-        <button class="card-footer-item">Edit</button>
+        <RouterLink :to="`/edit-note/:${note.id}`" class="card-footer-item">Edit</RouterLink>
         <button class="card-footer-item" @click="notesStore.deleteNote(note.id)">Delete</button>
       </footer>
     </div>
@@ -20,6 +20,7 @@
 <script setup>
 import { computed } from "vue"
 import { useNotesStore } from '@/stores/notes.store.js'
+import { RouterLink } from "vue-router";
 
 const notesStore = useNotesStore();
 
