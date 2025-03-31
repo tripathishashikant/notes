@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 
 export const useNotesStore = defineStore('notesStore', {
     state: () => {
@@ -13,6 +12,13 @@ export const useNotesStore = defineStore('notesStore', {
         },
         deleteNote(id) {
             this.notes = this.notes.filter(note => note.id !== id);
+        }
+    },
+    getters: {
+        getNoteContent(state) {
+            return (id) => {
+                return state.notes.filter((note) => note.id === id)[0].content;
+            }
         }
     }
 });

@@ -1,40 +1,38 @@
 <template>
   <div class="notes">
-    <div class="card has-background-primary-dark p-4 mb-5">
-      <div class="field">
-        <div class="control">
-          <textarea
-            class="textarea"
-            placeholder="Add a new note"
-            ref="newNoteRef"
-            v-model="newNote"
-          />
-        </div>
-      </div>
-
-      <div class="field is-grouped is-grouped-right">
-        <div class="control">
-          <button class="button is-link has-background-success" :disabled="newNote === ''" @click="handleAddNote">Add New Note</button>
-        </div>
-      </div>
-    </div>
+    <AddEditNote
+      v-model="newNote"
+      placeholder="Add a new note"
+      ref="addEditNoteRef"
+    >
+      <template #buttons>
+        <button
+          class="button is-link has-background-success"
+          :disabled="newNote === ''"
+          @click="handleAddNote"
+        >
+          Add New Note
+        </button>
+      </template>
+    </AddEditNote>
 
     <Note
       v-for="note in notesStore.notes"
       :key="note.id"
       :note="note"
-    />
+    /> 
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-import Note from "@/components/notes/Note.vue"
-import { useNotesStore } from '@/stores/notes.store.js'
+import { useNotesStore } from '@/stores/notes.store.js';
+import Note from "@/components/notes/Note.vue";
+import AddEditNote from '@/components/notes/AddEditNote.vue';
 
-const newNote = ref('');
 const notesStore = useNotesStore();
-const newNoteRef = ref(null);
+const newNote = ref('');
+const addEditNoteRef = ref(null);
 
 function handleAddNote() {
   const id = new Date().getTime().toString();
@@ -43,7 +41,7 @@ function handleAddNote() {
   notesStore.addNote(note);
 
   newNote.value = '';
-  newNoteRef.value.focus();
+  addEditNoteRef.value.focusTextarea();
 }
 </script>
 

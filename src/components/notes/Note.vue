@@ -7,11 +7,13 @@
           <p>{{ props.note.content }}</p>
         </div>
         <div class="mt-2">
-            <p class="has-text-right has-text-grey-light"> <small> {{ characterLength }} </small> </p>
+            <p class="has-text-right has-text-grey-light">
+              <small> {{ characterLength }} </small>
+            </p>
         </div>
       </div>
       <footer class="card-footer">
-        <RouterLink :to="`/edit-note/:${note.id}`" class="card-footer-item">Edit</RouterLink>
+        <RouterLink :to="`/edit-note/${note.id}`" class="card-footer-item">Edit</RouterLink>
         <button class="card-footer-item" @click="notesStore.deleteNote(note.id)">Delete</button>
       </footer>
     </div>

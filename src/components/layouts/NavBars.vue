@@ -2,9 +2,12 @@
   <nav class="navbar is-success mb-5" role="navigation" aria-label="main navigation">
     <div class="container is-max-desktop">
       <div class="navbar-brand">
-        <div class="navbar-item is-size-4 is-family-monospace">
+        <RouterLink
+          to="/"
+          class="navbar-item is-size-4 is-family-monospace"
+        >
           Notes
-        </div>
+        </RouterLink>
   
         <a
           role="button"
@@ -38,6 +41,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router';
 
 const showMobileNav = ref(false)
 </script>
