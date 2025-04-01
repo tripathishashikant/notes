@@ -13,8 +13,18 @@
         </div>
       </div>
       <footer class="card-footer">
-        <RouterLink :to="`/edit-note/${note.id}`" class="card-footer-item">Edit</RouterLink>
-        <button class="card-footer-item" @click="notesStore.deleteNote(note.id)">Delete</button>
+        <RouterLink
+          :to="`/edit-note/${note.id}`"
+          class="card-footer-item has-text-black-light"
+        >
+          Edit
+        </RouterLink>
+        <button
+          class="card-footer-item has-text-black-light"
+          @click="notesStore.deleteNote(note.id)"
+        >
+          Delete
+        </button>
       </footer>
     </div>
 </template>
