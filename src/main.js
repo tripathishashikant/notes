@@ -8,4 +8,10 @@ const app = createApp(App);
 app.use(router);
 app.use(createPinia());
 
+app.directive('autofocus', {
+  mounted: (el) => {
+    el.focus();
+  }
+});
+
 app.mount('#app')

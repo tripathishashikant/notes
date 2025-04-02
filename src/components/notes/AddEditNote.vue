@@ -15,6 +15,7 @@
           :placeholder="placeholder"
           v-model="model"
           ref="addNoteRef"
+          v-autofocus
         />
       </div>
     </div>
