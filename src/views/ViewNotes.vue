@@ -16,11 +16,26 @@
       </template>
     </AddEditNote>
 
-    <Note
-      v-for="note in notesStore.notes"
-      :key="note.id"
-      :note="note"
-    /> 
+    <progress
+      v-if="!notesStore.notesLoaded"
+      class="progress is-success"
+      max="100"
+    />
+
+    <template v-else>
+      <Note
+        v-for="note in notesStore.notes"
+        :key="note.id"
+        :note="note"
+      /> 
+    </template>
+
+    <div
+      v-if="!notesStore.notes.length"
+      class="is-size-6 has-text-centered has-text-grey-light is-family-monospace py-6"
+    >
+      <p>No notes yet...</p>
+    </div>
   </div>
 </template>
 
@@ -36,8 +51,8 @@ const newNote = ref('');
 const addEditNoteRef = ref(null);
 
 function handleAddNote() {
-  const id = new Date().getTime().toString();
-  const note = { id, content: newNote.value };
+  const date = new Date().getTime().toString();
+  const note = { date, content: newNote.value };
 
   notesStore.addNote(note);
 
