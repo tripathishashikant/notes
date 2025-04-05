@@ -7,8 +7,9 @@
           <p>{{ props.note.content }}</p>
         </div>
         <div class="mt-2">
-            <p class="has-text-right has-text-grey-light">
-              <small> {{ characterLength }} </small>
+            <p class="columns is-mobile has-text-grey-light mr-2">
+              <small class="column"> {{ formattedDate }} </small>
+              <small class="column has-text-right"> {{ characterLength }} </small>
             </p>
         </div>
       </div>
@@ -38,6 +39,7 @@
 <script setup>
 import { computed, reactive } from "vue"
 import { RouterLink } from "vue-router";
+import { useDateFormat } from "@vueuse/core";
 import ModalDeleteNote from "./ModalDeleteNote.vue";
 
 
@@ -52,6 +54,11 @@ const characterLength = computed(() => {
     const length = props.note.content.length;
     const charStr = length > 1 ? 'characters' : 'character'; 
     return `${length} ${charStr}`;
+});
+
+const formattedDate = computed(() => {
+  const date = new Date(Number(props.note.date));
+  return useDateFormat(date, "DD MMM YYYY @ HH:mm");
 });
 
 const modal = reactive({

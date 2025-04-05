@@ -1,6 +1,6 @@
 <template>
   <NavBars></NavBars>
-  <main class="container is-max-desktop">
+  <main class="container is-max-desktop mb-5">
     <RouterView></RouterView>
   </main>
 </template>
