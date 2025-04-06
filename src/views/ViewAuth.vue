@@ -36,7 +36,6 @@
               class="input"
               type="email"
               placeholder="Enter a email"
-              value=""
             >
           </div>
         </div>
@@ -49,7 +48,6 @@
               class="input"
               type="password"
               placeholder="Enter a password"
-              value=""
             >
           </div>
         </div>
