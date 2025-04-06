@@ -24,28 +24,73 @@
     </div>
     <div class="auth__card card">
       <div class="has-text-centered title mb-0">
-        {{ pageTitle }}
+        {{ formTitle }}
       </div>
-      <div class="card-content p-2">
-        <div class="content">
-          Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec
-          id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus
-          et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis
-          consectetur purus sit amet fermentum.
+
+      <form @submit.prevent="submitForm">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              v-model="credential.email"
+              class="input"
+              type="email"
+              placeholder="Enter a email"
+              value=""
+            >
+          </div>
         </div>
-      </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              v-model="credential.password"
+              class="input"
+              type="password"
+              placeholder="Enter a password"
+              value=""
+            >
+          </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-right">
+          <div class="control">
+            <button class="button is-success">{{ formTitle }}</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, reactive, computed } from 'vue'
+import { useAuthStore } from '@/stores/auth.store'
+
+const authStore = useAuthStore();
 
 const register = ref(false)
+const credential = reactive({
+  email: '',
+  password: '',
+})
 
-const pageTitle = computed(() => {
+const formTitle = computed(() => {
   return register.value ? 'Register' : 'Login'
 })
+
+function submitForm() {
+  if (!credential.email || !credential.password) {
+    alert('Please enter correct email and password!');
+  } else {
+    if (register.value) {
+      authStore.registerUser(credential);
+    } else {
+      console.log('Login the user using credential ', credential);
+    }
+  }
+}
 </script>
 
 <style scoped>
