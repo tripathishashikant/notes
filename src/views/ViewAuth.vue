@@ -87,7 +87,7 @@ function submitForm() {
     if (register.value) {
       authStore.registerUser(credential);
     } else {
-      console.log('Login the user using credential ', credential);
+      authStore.loginUser(credential);
     }
   }
 }
