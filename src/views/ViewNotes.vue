@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { useNotesStore } from '@/stores/notes.store.js';
 import Note from "@/components/notes/Note.vue";
 import AddEditNote from '@/components/notes/AddEditNote.vue';
@@ -61,10 +61,6 @@ function handleAddNote() {
 }
 
 useWatchCharacters(newNote);
-
-onMounted(() => {
-  notesStore.fetchNotes();
-});
 </script>
 
 <style scoped>
