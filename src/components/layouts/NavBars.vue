@@ -50,6 +50,7 @@
             Stats
           </RouterLink>
           <button
+            v-if="authStore.user.uid"
             class="navbar-item"
             @click="logout"
           >
