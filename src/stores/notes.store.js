@@ -44,6 +44,8 @@ export const useNotesStore = defineStore('notesStore', {
         });
         this.notes = notes;
         this.notesLoaded = true;
+      }, (error) => {
+        console.error('error message ', error.message);
       });
     },
     async addNote({ date, content }) {
