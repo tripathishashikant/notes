@@ -27,3 +27,5 @@ npm run dev
 ```sh
 npm run build
 ```
+
+See [Notes Site](https://notes-fa640.web.app).
