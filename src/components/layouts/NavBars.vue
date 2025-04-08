@@ -49,6 +49,13 @@
           >
             Stats
           </RouterLink>
+          <button
+            v-if="authStore.user.uid"
+            class="navbar-item"
+            @click="logout"
+          >
+            Logout {{ authStore.user.email }}
+          </button>
         </div>
       </div>
     </div>
@@ -59,6 +66,9 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router';
 import { onClickOutside } from '@vueuse/core';
+import { useAuthStore } from '@/stores/auth.store'
+
+const authStore = useAuthStore();
 
 const showMobileNav = ref(false)
 const navBarRef = ref(null)
@@ -69,6 +79,11 @@ onClickOutside(navBarRef, () => {
 }, {
   ignore: [navBarBurgerRef]
 });
+
+function logout() {
+  showMobileNav.value = false;
+  authStore.logoutUser();
+}
 </script>
 
 <style>
