@@ -3,9 +3,7 @@
       class="card"
     >
       <div class="card-content">
-        <div class="content">
-          <p>{{ props.note.content }}</p>
-        </div>
+        <div class="content" v-html="props.note.content"></div>
         <div class="mt-2">
             <p class="columns is-mobile has-text-grey-light mr-2">
               <small class="column"> {{ formattedDate }} </small>
