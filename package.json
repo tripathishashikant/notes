@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tiptap/extension-placeholder": "^2.11.9",
+    "@tiptap/pm": "^2.11.9",
+    "@tiptap/starter-kit": "^2.11.9",
+    "@tiptap/vue-3": "^2.11.9",
     "@vueuse/core": "^13.0.0",
     "bulma": "^1.0.3",
     "firebase": "^11.6.0",
@@ -18,7 +22,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.1",
-    "vite": "^6.0.11",
-    "vite-plugin-vue-devtools": "^7.7.0"
+    "vite": "^6.0.11"
   }
 }

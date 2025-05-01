@@ -1,14 +1,14 @@
 <template>
   <div class="notes">
     <AddEditNote
-      v-model="newNote"
+      v-model="content"
       placeholder="Add a new note"
       ref="addEditNoteRef"
     >
       <template #buttons>
         <button
           class="button is-link has-background-success"
-          :disabled="newNote === ''"
+          :disabled="content === ''"
           @click="handleAddNote"
         >
           Add New Note
@@ -42,25 +42,25 @@
 <script setup>
 import { ref } from 'vue';
 import { useNotesStore } from '@/stores/notes.store.js';
+import { useWatchCharacters } from '@/composables/useWatchCharacters';
 import Note from "@/components/notes/Note.vue";
 import AddEditNote from '@/components/notes/AddEditNote.vue';
-import { useWatchCharacters } from '@/composables/useWatchCharacters';
 
 const notesStore = useNotesStore();
-const newNote = ref('');
+const content = ref('');
 const addEditNoteRef = ref(null);
 
 function handleAddNote() {
   const date = new Date().getTime().toString();
-  const note = { date, content: newNote.value };
+  const note = { date, content: content.value };
 
   notesStore.addNote(note);
 
-  newNote.value = '';
+  content.value = '';
   addEditNoteRef.value.focusTextarea();
 }
 
-useWatchCharacters(newNote);
+useWatchCharacters(content);
 </script>
 
 <style scoped>

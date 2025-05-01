@@ -1,0 +1,33 @@
+<template>
+  <div class="container editor__wrapper">
+    <EditorContent :editor="editor" class="editor" />
+  </div>
+</template>
+
+<script setup>
+/**
+ * imports
+ */
+  import { useEditor, EditorContent } from '@tiptap/vue-3';
+  import createTiptapConfig from '@/config/tiptap.config';
+
+/**
+ * model
+ */
+  const model = defineModel();
+
+/**
+ * tiptap editor
+ */
+  const editor = useEditor(createTiptapConfig(model));
+</script>
+
+<style>
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+</style>

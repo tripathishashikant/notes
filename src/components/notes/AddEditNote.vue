@@ -10,13 +10,11 @@
         </label>
       </p>
       <div class="control">
-        <textarea
-          class="textarea"
-          :placeholder="placeholder"
-          v-model="model"
+        <Editor
           ref="addNoteRef"
+          v-model="model"
           v-autofocus
-          maxlength="100"
+          :placeholder="placeholder"
         />
       </div>
     </div>
@@ -31,6 +29,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import Editor from '@/components/tiptap/Editor.vue';
 
 const model = defineModel();
 const addNoteRef = ref(null);
