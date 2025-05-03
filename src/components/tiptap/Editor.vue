@@ -26,6 +26,10 @@
 </script>
 
 <style>
+.tiptap {
+  overflow-y: auto;
+}
+
 .tiptap p.is-editor-empty:first-child::before {
   color: #adb5bd;
   content: attr(data-placeholder);

@@ -32,11 +32,11 @@ import { ref } from 'vue';
 import Editor from '@/components/tiptap/Editor.vue';
 
 const model = defineModel();
-const addNoteRef = ref(null);
+// const addNoteRef = ref(null);
 
-function focusTextarea() {
-  addNoteRef.value.focus();
-}
+// function focusTextarea() {
+//   addNoteRef.value.focus();
+// }
 
 const props = defineProps({
   bgColor: {
@@ -52,7 +52,7 @@ const props = defineProps({
   }
 });
 
-defineExpose({
-  focusTextarea,
-});
+// defineExpose({
+//   focusTextarea,
+// });
 </script>
