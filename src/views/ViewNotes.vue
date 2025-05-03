@@ -1,9 +1,8 @@
 <template>
   <div class="notes">
     <AddEditNote
-      v-model="content"
-      placeholder="Add a new note"
       ref="addEditNoteRef"
+      v-model="content"
     >
       <template #buttons>
         <button
@@ -54,9 +53,8 @@ function handleAddNote() {
   const note = { date, content: content.value };
 
   notesStore.addNote(note);
-
   content.value = '';
-  // addEditNoteRef.value.focusTextarea();
+  setEditorInitialState.value.focusTextarea();
 }
 </script>
 

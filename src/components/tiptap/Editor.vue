@@ -23,6 +23,14 @@
  * tiptap editor
  */
   const editor = useEditor(createTiptapConfig(model));
+
+/**
+ * expose to parent
+ */
+  defineExpose({
+    editor,
+  });
+
 </script>
 
 <style>
