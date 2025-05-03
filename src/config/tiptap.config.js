@@ -14,7 +14,7 @@ export default (model) => ({
   ],
   editorProps: {
     attributes: {
-      class: 'textarea mb-5',
+      class: 'textarea mb-5 prose',
     },
   },
 });

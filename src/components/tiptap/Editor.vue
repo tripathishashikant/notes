@@ -1,6 +1,7 @@
 <template>
   <div class="container editor__wrapper">
-    <EditorContent :editor="editor" class="editor" />
+    <EditorToolBar v-if="editor" :editor="editor" class="editor__toolbar"/>
+    <EditorContent v-if="editor" :editor="editor" class="editor" />
   </div>
 </template>
 
@@ -8,8 +9,10 @@
 /**
  * imports
  */
+  import { onBeforeUnmount } from 'vue';
   import { useEditor, EditorContent } from '@tiptap/vue-3';
   import createTiptapConfig from '@/config/tiptap.config';
+  import EditorToolBar from '@/components/tiptap/EditorToolbar.vue';
 
 /**
  * model
