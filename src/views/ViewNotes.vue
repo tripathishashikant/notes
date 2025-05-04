@@ -54,7 +54,8 @@ function handleAddNote() {
 
   notesStore.addNote(note);
   content.value = '';
-  setEditorInitialState.value.focusTextarea();
+  addEditNoteRef.value.clearEditorContent();
+  addEditNoteRef.value.setFocusOnEditor();
 }
 </script>
 

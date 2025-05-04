@@ -32,9 +32,16 @@ import Editor from '@/components/tiptap/Editor.vue';
 const model = defineModel();
 const addNoteRef = ref(null);
 
-function setEditorInitialState() {
+function setFocusOnEditor() {
   if (addNoteRef.value && addNoteRef.value.editor) {
     addNoteRef.value.editor.commands.focus();
+  } else {
+    console.warn('Editor instance is not available.');
+  }
+}
+
+function clearEditorContent() {
+  if (addNoteRef.value && addNoteRef.value.editor) {
     addNoteRef.value.editor.commands.clearContent();
   } else {
     console.warn('Editor instance is not available.');
@@ -56,10 +63,11 @@ const props = defineProps({
 });
 
 onMounted(() => {
-  setEditorInitialState();
+  setFocusOnEditor();
 });
 
 defineExpose({
-  setEditorInitialState
+  setFocusOnEditor,
+  clearEditorContent,
 });
 </script>
