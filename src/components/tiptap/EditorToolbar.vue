@@ -15,6 +15,13 @@
       <ItalicIcon title="Italic icon" />
     </button>
     <button
+      @click="editor.chain().focus().toggleUnderline().run()"
+      :class="{ 'is-active': editor.isActive('underline') }"
+      class="toolbar__button"
+    >
+      <UnderlineIcon  title="Underline icon"/>
+    </button>
+    <button
       @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
       :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
       class="toolbar__button">
@@ -43,6 +50,37 @@
       :class="{ 'is-active': editor.isActive('orderedList') }"
       class="toolbar__button">
       <NumberedListIcon title="Numbered list icon" />
+    </button>
+    <button
+      @click="editor.chain().focus().setTextAlign('left').run()"
+      :class="{ 'is-active': editor.isActive({ textAlign: 'left' }) }"
+      class="toolbar__button">
+      <AlignLeftIcon title="Align Left icon" />
+    </button>
+    <button
+      @click="editor.chain().focus().setTextAlign('center').run()"
+      :class="{ 'is-active': editor.isActive({ textAlign: 'center' }) }"
+      class="toolbar__button">
+      <AlignCenterIcon title="Align Center icon" />
+    </button>
+    <button
+      @click="editor.chain().focus().setTextAlign('right').run()"
+      :class="{ 'is-active': editor.isActive({ textAlign: 'right' }) }"
+      class="toolbar__button">
+      <AlignRightIcon title="Align Right icon" />
+    </button>
+    <button
+      @click="editor.chain().focus().setTextAlign('justify').run()"
+      :class="{ 'is-active': editor.isActive({ textAlign: 'justify' }) }"
+      class="toolbar__button">
+      <AlignJustifyIcon title="Align Justify icon" />
+    </button>
+    <button
+      @click="editor.chain().focus().toggleHighlight().run()"
+      :class="{ 'is-active': editor.isActive('highlight') }"
+      class="toolbar__button"
+    >
+      <HighlightIcon title="Highlight icon" />
     </button>
     <button
       @click="editor.chain().focus().toggleBlockquote().run()"
@@ -92,11 +130,17 @@
  */
  import BoldIcon from 'vue-material-design-icons/FormatBold.vue';
  import ItalicIcon from 'vue-material-design-icons/FormatItalic.vue';
+ import UnderlineIcon from 'vue-material-design-icons/FormatUnderline.vue';
  import H1Icon from 'vue-material-design-icons/FormatHeader1.vue';
  import H2Icon from 'vue-material-design-icons/FormatHeader2.vue';
  import H3Icon from 'vue-material-design-icons/FormatHeader3.vue';
+ import AlignLeftIcon from 'vue-material-design-icons/FormatAlignLeft.vue';
+ import AlignCenterIcon from 'vue-material-design-icons/FormatAlignCenter.vue';
+ import AlignRightIcon from 'vue-material-design-icons/FormatAlignRight.vue';
+ import AlignJustifyIcon from 'vue-material-design-icons/FormatAlignJustify.vue';
  import BulletListIcon from 'vue-material-design-icons/FormatListBulleted.vue';
  import NumberedListIcon from 'vue-material-design-icons/FormatListNumbered.vue';
+ import HighlightIcon from 'vue-material-design-icons/FormatColorHighlight.vue';
  import BlockquoteIcon from 'vue-material-design-icons/FormatQuoteClose.vue';
  import CodeIcon from 'vue-material-design-icons/CodeTags.vue';
  import CodeBlockIcon from 'vue-material-design-icons/CodeBlockTags.vue';

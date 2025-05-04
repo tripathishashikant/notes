@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
+    "@tiptap/extension-highlight": "^2.11.9",
     "@tiptap/extension-placeholder": "^2.11.9",
+    "@tiptap/extension-text-align": "^2.11.9",
+    "@tiptap/extension-underline": "^2.11.9",
     "@tiptap/pm": "^2.11.9",
     "@tiptap/starter-kit": "^2.11.9",
     "@tiptap/vue-3": "^2.11.9",
