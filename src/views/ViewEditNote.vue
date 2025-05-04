@@ -1,26 +1,28 @@
 <template>
-  <AddEditNote
-    v-model="noteContent"
-    bgColor="info"
-    placeholder="Edit note"
-    label="Edit Note"
-  >
-    <template #buttons>
-      <button
-        class="button is-link has-background-info mr-5"
-        @click="$router.back()"
-      >
-        Cancel
-      </button>
-      <button
-        class="button is-link has-background-info"
-        :disabled="noteContent === ''"
-        @click="handleUpdateNote"
-      >
-        Save Note
-      </button>
-    </template>
-  </AddEditNote>
+  <div class="editNotes">
+    <AddEditNote
+      v-model="noteContent"
+      bgColor="info"
+      placeholder="Edit note"
+      label="Edit Note"
+    >
+      <template #buttons>
+        <button
+          class="button is-link has-background-info mr-5"
+          @click="$router.back()"
+        >
+          Cancel
+        </button>
+        <button
+          class="button is-link has-background-info"
+          :disabled="noteContent === ''"
+          @click="handleUpdateNote"
+        >
+          Save Note
+        </button>
+      </template>
+    </AddEditNote>
+  </div>
 </template>
 
 <script setup>
@@ -42,3 +44,12 @@ function handleUpdateNote() {
   router.push('/');
 }
 </script>
+
+
+<style scoped>
+@media screen and (max-width: 1023px) {
+  .editNotes {
+    padding: 0.5rem 0.75rem;
+  }
+}
+</style>
