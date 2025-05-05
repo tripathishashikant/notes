@@ -1,9 +1,8 @@
 <template>
   <div class="notes">
     <AddEditNote
-      v-model="content"
-      placeholder="Add a new note"
       ref="addEditNoteRef"
+      v-model="content"
     >
       <template #buttons>
         <button
@@ -42,7 +41,6 @@
 <script setup>
 import { ref } from 'vue';
 import { useNotesStore } from '@/stores/notes.store.js';
-import { useWatchCharacters } from '@/composables/useWatchCharacters';
 import Note from "@/components/notes/Note.vue";
 import AddEditNote from '@/components/notes/AddEditNote.vue';
 
@@ -55,12 +53,10 @@ function handleAddNote() {
   const note = { date, content: content.value };
 
   notesStore.addNote(note);
-
   content.value = '';
-  addEditNoteRef.value.focusTextarea();
+  addEditNoteRef.value.clearEditorContent();
+  addEditNoteRef.value.setFocusOnEditor();
 }
-
-useWatchCharacters(content);
 </script>
 
 <style scoped>
