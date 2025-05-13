@@ -102,6 +102,12 @@
       <CodeBlockIcon title="Code block icon" />
     </button>
     <button
+      @click="addImage"
+      class="toolbar__button"
+    >
+      <ImageIcon title="Image icon" />
+    </button>
+    <button
       @click="editor.chain().focus().setHorizontalRule().run()"
       class="toolbar__button"
     >
@@ -147,6 +153,7 @@
  import HRIcon from 'vue-material-design-icons/Minus.vue';
  import UndoIcon from 'vue-material-design-icons/Undo.vue';
  import RedoIcon from 'vue-material-design-icons/Redo.vue';
+ import ImageIcon from 'vue-material-design-icons/Image.vue';
 
 /**
  * props
@@ -157,6 +164,18 @@
       required: true,
     },
   });
+
+/**
+ * Add Image method for adding image
+ */
+  function addImage() {
+    const url = window.prompt('URL')
+
+    if (url) {
+      props.editor.chain().focus().setImage({ src: url }).run()
+    }
+  }
+
 </script>
 
 <style>
@@ -258,6 +277,17 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  img {
+    display: block;
+    height: auto;
+    margin: 1.5rem 0;
+    max-width: 100%;
+
+    &.ProseMirror-selectednode {
+      outline: 3px solid var(--purple);
+    }
   }
 }
 </style>

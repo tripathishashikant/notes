@@ -3,6 +3,7 @@ import Placeholder from '@tiptap/extension-placeholder';
 import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Highlight from '@tiptap/extension-highlight';
+import Image from '@tiptap/extension-image';
 
 export default (model) => ({
   content: model.value,
@@ -13,6 +14,7 @@ export default (model) => ({
     StarterKit,
     Underline,
     Highlight,
+    Image,
     TextAlign.configure({
       types: ['heading', 'paragraph'],
     }),
