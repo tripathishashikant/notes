@@ -10,13 +10,9 @@
         </label>
       </p>
       <div class="control">
-        <textarea
-          class="textarea"
-          :placeholder="placeholder"
-          v-model="model"
+        <Editor
           ref="addNoteRef"
-          v-autofocus
-          maxlength="100"
+          v-model="model"
         />
       </div>
     </div>
@@ -30,13 +26,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import Editor from '@/components/tiptap/Editor.vue';
 
 const model = defineModel();
 const addNoteRef = ref(null);
 
-function focusTextarea() {
-  addNoteRef.value.focus();
+function setFocusOnEditor() {
+  if (addNoteRef.value && addNoteRef.value.editor) {
+    addNoteRef.value.editor.commands.focus();
+  } else {
+    console.warn('Editor instance is not available.');
+  }
+}
+
+function clearEditorContent() {
+  if (addNoteRef.value && addNoteRef.value.editor) {
+    addNoteRef.value.editor.commands.clearContent();
+  } else {
+    console.warn('Editor instance is not available.');
+  }
 }
 
 const props = defineProps({
@@ -53,7 +62,12 @@ const props = defineProps({
   }
 });
 
+onMounted(() => {
+  setFocusOnEditor();
+});
+
 defineExpose({
-  focusTextarea,
+  setFocusOnEditor,
+  clearEditorContent,
 });
 </script>

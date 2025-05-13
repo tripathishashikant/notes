@@ -35,7 +35,6 @@ export const useAuthStore = defineStore('useAuthStore', {
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
       })
       .catch((error) => {
         console.error(error.message);
@@ -43,9 +42,6 @@ export const useAuthStore = defineStore('useAuthStore', {
     },
     loginUser({ email, password }) {
       signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log('user logged in: ', userCredential.user);
-      })
       .catch((error) => {
         console.error(error.message)
       });
