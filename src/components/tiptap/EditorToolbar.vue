@@ -108,6 +108,12 @@
       <ImageIcon title="Image icon" />
     </button>
     <button
+      @click="addLink"
+      class="toolbar__button"
+    >
+      <LinkIcon title="Link icon" />
+    </button>
+    <button
       @click="editor.chain().focus().setHorizontalRule().run()"
       class="toolbar__button"
     >
@@ -150,10 +156,11 @@
  import BlockquoteIcon from 'vue-material-design-icons/FormatQuoteClose.vue';
  import CodeIcon from 'vue-material-design-icons/CodeTags.vue';
  import CodeBlockIcon from 'vue-material-design-icons/CodeBlockTags.vue';
+ import ImageIcon from 'vue-material-design-icons/Image.vue';
+ import LinkIcon from 'vue-material-design-icons/Link.vue';
  import HRIcon from 'vue-material-design-icons/Minus.vue';
  import UndoIcon from 'vue-material-design-icons/Undo.vue';
  import RedoIcon from 'vue-material-design-icons/Redo.vue';
- import ImageIcon from 'vue-material-design-icons/Image.vue';
 
 /**
  * props
@@ -173,6 +180,17 @@
 
     if (url) {
       props.editor.chain().focus().setImage({ src: url }).run()
+    }
+  }
+
+/**
+ * Add Image method for adding image
+ */
+  function addLink() {
+    const url = window.prompt('Enter the URL')
+
+    if (url) {
+      props.editor.chain().focus().setLink({ href: url }).run()
     }
   }
 

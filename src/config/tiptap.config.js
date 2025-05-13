@@ -4,6 +4,7 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import Highlight from '@tiptap/extension-highlight';
 import Image from '@tiptap/extension-image';
+import Link from '@tiptap/extension-link';
 
 export default (model) => ({
   content: model.value,
@@ -15,6 +16,7 @@ export default (model) => ({
     Underline,
     Highlight,
     Image,
+    Link,
     TextAlign.configure({
       types: ['heading', 'paragraph'],
     }),
