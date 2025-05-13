@@ -41,6 +41,19 @@ The project integrates the TipTap editor with the following features:
 ### Customization
 The editor is configured in `src/config/tiptap.config.js`. You can modify the configuration to add or remove features as needed.
 
+## Folder Structure
+- `src/components/notes`: Components for managing notes (e.g., Add/Edit Note, Delete Modal).
+- `src/components/tiptap`: TipTap editor and toolbar components.
+- `src/config`: Configuration files (e.g., TipTap editor configuration).
+- `src/stores`: Vuex stores for managing application state (e.g., notes, authentication).
+- `src/views`: Application views (e.g., Notes, Authentication, Statistics).
+
+## Documentation
+
+For more details on the TipTap editor and its usage with Vue, refer to the official documentation:
+- [TipTap Vue Documentation](https://tiptap.dev/)
+- [Vue Material Design Icons Documentation](https://www.npmjs.com/package/vue-material-design-icons)
+
 ## Project Setup
 
 ### Prerequisites
@@ -78,17 +91,40 @@ Deploy the project to Firebase:
 firebase deploy
 ```
 
-## Folder Structure
-- `src/components/notes`: Components for managing notes (e.g., Add/Edit Note, Delete Modal).
-- `src/components/tiptap`: TipTap editor and toolbar components.
-- `src/config`: Configuration files (e.g., TipTap editor configuration).
-- `src/stores`: Vuex stores for managing application state (e.g., notes, authentication).
-- `src/views`: Application views (e.g., Notes, Authentication, Statistics).
+## Firebase Deployment
 
-## Documentation
+To deploy the Notes Application to Firebase, follow these steps:
 
-For more details on the TipTap editor and its usage with Vue, refer to the official documentation:
-- [TipTap Vue Documentation](https://tiptap.dev/)
+### Prerequisites
+- Install the Firebase CLI:
+  ```sh
+  npm install -g firebase-tools
+  ```
+- Log in to your Firebase account:
+  ```sh
+  firebase login
+  ```
+- Ensure you have a Firebase project set up. If not, create one in the [Firebase Console](https://console.firebase.google.com/).
+
+### Deployment Steps
+1. Initialize Firebase in your project:
+   ```sh
+   firebase init
+   ```
+   - Select the Firebase features you want to use (e.g., Hosting, Firestore).
+   - Choose the Firebase project you want to associate with this application.
+   - Specify `dist` as the public directory (this is where the production build will be located).
+   - Configure as a single-page app (yes).
+
+2. Build the project for production:
+   ```sh
+   npm run build
+   ```
+
+3. Deploy to Firebase:
+   ```sh
+   firebase deploy
+   ```
 
 ## Live Demo
 Check out the live demo of the application: [Notes Application](https://notes-fa640.web.app)
